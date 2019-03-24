@@ -6,11 +6,11 @@ module.exports = function getZerosCount(number, base) {
         tempFac = 1,
         j=0;
   
-    while (base>2) {
+    while (base > 2) {
       if (base % simpleInt == 0) {
           primeArr.push(simpleInt); 
-          base= base/simpleInt;
-      }  else {
+          base = base/simpleInt;
+      } else {
         simpleInt++;
       }     
     }
@@ -27,21 +27,18 @@ module.exports = function getZerosCount(number, base) {
     }
 
     var simple = unique(primeArr);
-    console.log(simple);
-
     
-    for (var k = 0; k<simple.length;k++) {
+    for (var k = 0; k<simple.length; k++) {
       while (Math.floor(tempFac) != 0) {
         tempFac = number/Math.pow(simple[k], (j+1));
         j++;
         countFac= countFac+Math.floor(tempFac);
-    }
+      } 
+
       tempArr[k] = countFac;
       tempFac = 1;
       countFac = 0;
       j=0;
     }
-    console.log(Math.min(...tempArr));
     return Math.min(...tempArr);
-
   }
